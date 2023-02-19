@@ -38,3 +38,4 @@ Unityで様々なRoslyn Analyzerの導入を検証するためのリポジトリ
 ### 参考リンク
 - [【Unity】Unityに既存のRoslyn Analyzerを導入する手順まとめ](https://light11.hatenadiary.com/entry/2022/11/01/193339)
 - [Unityプロジェクト向けRoslynアナライザの作りかた](https://swet.dena.com/entry/2021/05/25/100000)
+- [Roslyn アナライザーとルールセットファイル](https://docs.unity3d.com/ja/2021.2/Manual/roslyn-analyzers.html)
