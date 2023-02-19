@@ -1,0 +1,14 @@
+{
+    "name": "Project.Microsoft.Unity.Analyzers",
+    "rootNamespace": "Project.Microsoft.Unity.Analyzers",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

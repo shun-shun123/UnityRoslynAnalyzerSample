@@ -39,3 +39,37 @@ Unityで様々なRoslyn Analyzerの導入を検証するためのリポジトリ
 - [【Unity】Unityに既存のRoslyn Analyzerを導入する手順まとめ](https://light11.hatenadiary.com/entry/2022/11/01/193339)
 - [Unityプロジェクト向けRoslynアナライザの作りかた](https://swet.dena.com/entry/2021/05/25/100000)
 - [Roslyn アナライザーとルールセットファイル](https://docs.unity3d.com/ja/2021.2/Manual/roslyn-analyzers.html)
+
+## Microsoft.CodeAnalysis.BannedApiAnalyzers
+### 導入方法
+`.csproj`にAdditionalFilesの設定を追加する必要があるため、[CsprojModifier](https://github.com/Cysharp/CsprojModifier)を導入する。
+
+Package ManagerからAdd Package from git URLで下記を入力
+
+```
+https://github.com/Cysharp/CsprojModifier.git?path=src/CsprojModifier/Assets/CsprojModifier
+```
+
+次に[nuget](https://www.nuget.org/packages/Microsoft.CodeAnalysis.BannedApiAnalyzers/)から`Microsoft.CodeAnalysis.CSharp.BannedApiAnalyzers.dll`と`Microsoft.CodeAnalysis.BannedApiAnalyzers.dll`を落として
+Unity Projectに配置し、import settingsを`Microsoft.Unity.Analyzers`と同様に設定する
+
+BannedApiAnalyzersはどのAPIの使用を禁止するかを指定する追加ファイルの作成と、.csprojへの設定が必要。
+プロジェクト直下に`BannedSymbols.txt`と`BannedSymbols.props`を作成、配置する。
+
+`BannedSymbols.props`は下記のように設定
+
+```
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Analyzer Include="Assets/Editor/Microsoft.CodeAnalysis.BannedApiAnalyzers.dll" />
+    <Analyzer Include="Assets/Editor/Microsoft.CodeAnalysis.CSharp.BannedApiAnalyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="$(ProjectDir)\BannedSymbols.txt" />
+  </ItemGroup>
+</Project>
+```
+
+次にこれらを.csprojに追加で設定するため、`Project Settings`の`C# Project Modifier`から`Additional project imports`に登録する。
+
+![Additional project importsの設定](Reference/additional_project_imports.png)
