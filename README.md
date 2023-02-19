@@ -53,3 +53,23 @@ https://github.com/Cysharp/CsprojModifier.git?path=src/CsprojModifier/Assets/Csp
 次に[nuget](https://www.nuget.org/packages/Microsoft.CodeAnalysis.BannedApiAnalyzers/)から`Microsoft.CodeAnalysis.CSharp.BannedApiAnalyzers.dll`と`Microsoft.CodeAnalysis.BannedApiAnalyzers.dll`を落として
 Unity Projectに配置し、import settingsを`Microsoft.Unity.Analyzers`と同様に設定する
 
+BannedApiAnalyzersはどのAPIの使用を禁止するかを指定する追加ファイルの作成と、.csprojへの設定が必要。
+プロジェクト直下に`BannedSymbols.txt`と`BannedSymbols.props`を作成、配置する。
+
+`BannedSymbols.props`は下記のように設定
+
+```
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Analyzer Include="Assets/Editor/Microsoft.CodeAnalysis.BannedApiAnalyzers.dll" />
+    <Analyzer Include="Assets/Editor/Microsoft.CodeAnalysis.CSharp.BannedApiAnalyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="$(ProjectDir)\BannedSymbols.txt" />
+  </ItemGroup>
+</Project>
+```
+
+次にこれらを.csprojに追加で設定するため、`Project Settings`の`C# Project Modifier`から`Additional project imports`に登録する。
+
+![Additional project importsの設定](Reference/additional_project_imports.png)
