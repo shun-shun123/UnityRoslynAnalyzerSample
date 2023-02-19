@@ -13,4 +13,4 @@ Unityで様々なRoslyn Analyzerの導入を検証するためのリポジトリ
 - Select platforms for pluginのチェックをすべて外す
 - Asset Labelsに`RoslynAnalyzer`を設定する
 
-![Microsoft.Unity.AnalyzersのImport Settings](Reference/microsoft_unity_analyzers_import_settings)
+![Microsoft.Unity.AnalyzersのImport Settings](Reference/microsoft_unity_analyzers_import_settings.png)
