@@ -11,7 +11,7 @@ namespace Project.Microsoft.Unity.Analyzers.Runtime
 
         void Update()
         {
-            // var foo = Time.fixedDeltaTime;
+            var foo = Time.fixedDeltaTime;
         }
     }
 }

@@ -14,3 +14,17 @@ Unityで様々なRoslyn Analyzerの導入を検証するためのリポジトリ
 - Asset Labelsに`RoslynAnalyzer`を設定する
 
 ![Microsoft.Unity.AnalyzersのImport Settings](Reference/microsoft_unity_analyzers_import_settings.png)
+
+### rulesetを設定する方法
+`Assets`以下に`Default.ruleset`を配置して特定の検知結果をエラーとする。
+
+```text
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Example Rule Set" Description=" " ToolsVersion="10.0">
+    <Rules AnalyzerId="Microsoft.Unity.Analyzers" RuleNamespace="Microsoft.Unity.Analyzers">
+        <Rule Id="UNT0004" Action="Error" />
+    </Rules>
+</RuleSet>
+```
+
+![Default.ruleset](Reference/default_ruleset_error.png)
